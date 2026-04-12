@@ -8,3 +8,7 @@ app.use(express.json());
 app.post('/api/v1/products', registerProduct);
 
 module.exports = app;
+
+app.get('/', (req, res) => {
+    res.send('🌿 API EcoMart está online e pronta para reciclar!');
+});

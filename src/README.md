@@ -6,7 +6,7 @@ O **EcoMart** é uma iniciativa fictícia de supermercado inteligente que visa i
 
 * **Node.js** & **Express** (Framework Web)
 * **Jest** & **Supertest** (Testes Automatizados)
-* **JavaScript** (ES6+)
+* **JavaScript** (CommonJS)
 
 ## 🛠️ Regras de Negócio e Validações
 
@@ -14,7 +14,7 @@ Para garantir a integridade dos dados e o foco socioambiental, o cadastro de pro
 
 1.  **Valor Mínimo:** O preço do produto deve ser de, no mínimo, **R$ 0,01**.
 2.  **Código de Barras (EAN-13):** Deve possuir exatamente 13 dígitos numéricos e ser único no sistema.
-3.  **Lista Branca de Materiais:** Só são aceitos materiais recicláveis: `Plástico`, `Vidro`, `Alumínio`, `Papel` ou `TetraPak`.
+3.  **Materiais Aceitos:** `Plástico`, `Vidro`, `Alumínio`, `Papel` ou `TetraPak`.
 4.  **Limite de Recompensa:** Os `ecoPoints` não podem exceder **20% do valor do produto**, garantindo a viabilidade financeira do programa de descontos.
 5.  **Persistência:** Os dados são salvos **em memória**, sendo resetados sempre que o servidor for reiniciado.
 
@@ -27,18 +27,16 @@ Para garantir a integridade dos dados e o foco socioambiental, o cadastro de pro
 ### Passo a Passo
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/SEU_USUARIO/ecomart-api.git](https://github.com/biafinotti/ecomart-api.git)
+   git clone [https://github.com/biafinotti/ecomart-api.git](https://github.com/biafinotti/ecomart-api.git)
 
    
 
-   Instale as dependências:
+ ## 📥 Como Executar
+1. Instale as dependências: `npm install` //Bash
+2. Inicie o servidor: `npm start`
+3. Teste os endpoints usando **Thunder Client** ou **Postman**.
 
-Bash
-npm install
-Inicie o servidor:
 
-Bash
-npm start
 A API estará disponível em http://localhost:3000
 
 🧪 Executando os Testes
@@ -75,3 +73,15 @@ Ao subir o código, não esqueça de configurar o arquivo `package.json` para qu
   "start": "node server.js",
   "test": "jest"
 }
+
+Envie a versão definitiva para o GitHub
+//Bash
+
+# 1. Prepara todos os arquivos (incluindo o README preenchido)
+git add .
+
+# 2. Cria uma mensagem de atualização
+git commit -m "docs: restaurando conteúdo do README"
+
+# 3. Envia para o GitHub
+git push origin main
