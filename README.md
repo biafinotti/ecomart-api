@@ -101,14 +101,16 @@ JSON
 Resultado esperado ✔: Status 201 Created e o objeto do produto com ID gerado.
 ````
 
-![Resultado dos Testes](../prints/resultado-testes1.png)
+![Resultado dos Testes](assets/resultado-testes1.png)
+
 
 ````
 Resultado esperado ✘: Status 400 Bad Conflict/Request com a mensagem de erro correspondente.
 ````
 
-![Resultado dos Testes](../prints/resultado-testes2.png)
-![Resultado dos Testes](../prints/resultado-testes3.png)
+![Resultado dos Testes](assets/resultado-testes2.png)
+
+![Resultado dos Testes](assets/resultado-testes3.png)
 
 
 **Via Testes Automatizados:**
@@ -119,7 +121,7 @@ Bash
 npm test
 ````
 
-![Resultado dos Testes](./prints/resultado-testes.png)
+![Resultado dos Testes](assets/resultado-testes.png)
 
 
 
