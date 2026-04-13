@@ -100,13 +100,16 @@ JSON
 ````
 Resultado esperado ✔: Status 201 Created e o objeto do produto com ID gerado.
 ````
-`![Resultado dos Testes](./resultado-testes1.png)`
+
+![Resultado dos Testes](../prints/resultado-testes1.png)
 
 ````
 Resultado esperado ✘: Status 400 Bad Conflict/Request com a mensagem de erro correspondente.
 ````
-`![Resultado dos Testes](./resultado-testes2.png)`
-`![Resultado dos Testes](./resultado-testes3.png)`
+
+![Resultado dos Testes](../prints/resultado-testes2.png)
+![Resultado dos Testes](../prints/resultado-testes3.png)
+
 
 **Via Testes Automatizados:**
 ```
@@ -116,7 +119,7 @@ Bash
 npm test
 ````
 
-`![Resultado dos Testes](./resultado-testes.png)`
+![Resultado dos Testes](./prints/resultado-testes.png)
 
 
 
@@ -166,31 +169,15 @@ Para finalizar o desafio, a API deverá ser versionada em um repositório no Git
 
 
 
+## Destaques do Desafio:
+
+* **IA Generativa:** Utilizada para auxiliar na escrita de rotas e na criação de casos de teste.
+
+* **Documentação:** Swagger implementado para facilitar a execução de testes de contrato e integração.
+
+* **Padronização:** Estrutura organizada para garantir que cada teste seja repetível e confiável.
+
+
 ##
 
 **Desenvolvido com o auxílio de IA Generativa para fins de aprendizado em desenvolvimento de APIs.**
-
-
-
-```bash
-    git add README.md
-    git commit -m "docs: versão final da documentação do projeto"
-    git push origin main
-    npm test
-$ npm test
-
-> ecomart-api@1.0.0 test
-> jest
-
- PASS  tests/product.test.js
-  √ soma básica (6 ms)
-  Cadastro de Produtos EcoMart
-    √ Deve cadastrar um produto válido (683 ms)
-    √ Não deve aceitar preço abaixo de 0.01 (72 ms)
-    √ Não deve aceitar código de barras duplicado (123 ms)
-
-Test Suites: 1 passed, 1 total
-Tests:       4 passed, 4 total
-Snapshots:   0 total
-Time:        5.916 s
-Ran all test suites.
