@@ -1,6 +1,13 @@
 const app = require('./app');
-const PORT = 3000;
+
+const PORT = 3001;
+
+
 
 app.listen(PORT, () => {
-    console.log(`🌿 EcoMart API rodando em http://localhost:${PORT}`);
+
+    // Usando crase para que o ${PORT} funcione corretamente
+
+    console.log(`EcoMart API rodando em http://localhost:${PORT}`);
+
 });

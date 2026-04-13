@@ -1,87 +1,196 @@
-# 🌿 EcoMart API - Cadastro de Produtos Sustentáveis
+#   EcoMart API - Cadastro de Produtos Sustentáveis
 
-O **EcoMart** é uma iniciativa fictícia de supermercado inteligente que visa incentivar a economia circular. Esta API permite o cadastro de produtos, validando critérios de sustentabilidade e atribuindo "Eco-Pontos" que podem ser convertidos em descontos futuros para clientes que retornarem as embalagens para reciclagem.
-
-## 🚀 Tecnologias Utilizadas
-
-* **Node.js** & **Express** (Framework Web)
-* **Jest** & **Supertest** (Testes Automatizados)
-* **JavaScript** (CommonJS)
-
-## 🛠️ Regras de Negócio e Validações
-
-Para garantir a integridade dos dados e o foco socioambiental, o cadastro de produtos segue as seguintes regras:
-
-1.  **Valor Mínimo:** O preço do produto deve ser de, no mínimo, **R$ 0,01**.
-2.  **Código de Barras (EAN-13):** Deve possuir exatamente 13 dígitos numéricos e ser único no sistema.
-3.  **Materiais Aceitos:** `Plástico`, `Vidro`, `Alumínio`, `Papel` ou `TetraPak`.
-4.  **Limite de Recompensa:** Os `ecoPoints` não podem exceder **20% do valor do produto**, garantindo a viabilidade financeira do programa de descontos.
-5.  **Persistência:** Os dados são salvos **em memória**, sendo resetados sempre que o servidor for reiniciado.
-
-## 📥 Instalação e Uso
-
-### Pré-requisitos
-* Node.js instalado (versão 14 ou superior)
-* NPM ou Yarn
-
-### Passo a Passo
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/biafinotti/ecomart-api.git](https://github.com/biafinotti/ecomart-api.git)
-
-   
-
- ## 📥 Como Executar
-1. Instale as dependências: `npm install` //Bash
-2. Inicie o servidor: `npm start`
-3. Teste os endpoints usando **Thunder Client** ou **Postman**.
+O **EcoMart** é um sistema de inventário para supermercados focado em economia circular. A API permite o cadastro de produtos, validando critérios de reciclagem e calculando "Eco-Pontos" que incentivam o descarte correto de embalagens em troca de descontos.
 
 
-A API estará disponível em http://localhost:3000
 
-🧪 Executando os Testes
-Este projeto utiliza testes automatizados para garantir que todas as regras de negócio sejam respeitadas. Para rodar a suíte de testes, execute:
+##  Status do Projeto
+Este projeto foi concluído com sucesso, cobrindo desde a configuração do servidor até a implementação de testes automatizados e documentação.
 
+
+
+##  Tecnologias e Padrões
+* **Ambiente:** Node.js v24+
+* **Framework:** Express
+* **Padrão de Módulos:** CommonJS (Uso de `require` e `module.exports`)
+* **Testes:** Jest & Supertest
+* **Banco de Dados:** Armazenamento em memória (volátil)
+
+
+
+##  Estrutura do Projeto
+```text
+ecomart-api/
+├── src/
+│   ├── app.js          # Configuração e rotas do Express
+│   ├── controller.js   # Lógica e regras de negócio
+│   └── server.js       # Inicialização do servidor (porta 3000)
+├── tests/
+│   └── product.test.js # Testes automatizados de validação
+├── package.json        # Dependências e scripts
+└── README.md           # Documentação do projeto
+````
+
+
+##  Regras de Negócio Implementadas
+ Durante o desenvolvimento, aplicamos as seguintes restrições no cadastro:
+
+* Valor Mínimo: O preço do produto deve ser igual ou superior a R$ 0,01.
+
+* Código de Barras (EAN-13): Deve possuir exatamente 13 dígitos numéricos.
+
+* Unicidade: Não é permitido cadastrar dois produtos com o mesmo código de barras.
+
+* Materiais Permitidos: Apenas 'Plástico', 'Vidro', 'Alumínio', 'Papel' ou 'TetraPak'.
+
+* Limite de Recompensa: O valor de ecoPoints não pode exceder 20% do valor total do produto para garantir a viabilidade do negócio.
+
+
+
+##  Como Instalar e Rodar:
+1. **Clone o repositório:**
+````
 Bash
-npm test
-🗺️ Endpoints
-Cadastro de Produto
-URL: /api/v1/products
+````
+````
+git clone [https://github.com/biafinotti/ecomart-api.git](https://github.com/biafinotti/ecomart-api.git)
+````
 
-Método: POST
+2. **Instale as dependências:**
+````
+Bash
+````
+```
+npm install
+````
 
-Payload Exemplo:
+3. **Inicie o servidor:**
+````
+Bash
+````
+```
+npm start
+````
 
+*O console exibirá:* ♻️ *EcoMart API rodando em http://localhost:3001* 
+
+
+
+##  Testando a API
+
+**Via Thunder Client / Postman:**
+
+* **Método:** POST
+
+* **URL:** http://localhost:3001/api/v1/products
+
+* **Body (JSON):**
+```
 JSON
+````
+```
 {
-  "name": "Garrafa de Vidro 500ml",
+  "name": "Suco de Uva Garrafa 800ml",
   "barcode": "7891234567890",
-  "price": 8.50,
+  "price": 15.00,
   "material": "Vidro",
-  "ecoPoints": 1.50
+  "ecoPoints": 2.00
 }
-Projeto desenvolvido como desafio técnico de API com foco em sustentabilidade e IA Generativa.
+````
+````
+Resultado esperado ✔: Status 201 Created e o objeto do produto com ID gerado.
+````
+`![Resultado dos Testes](./resultado-testes1.png)`
+
+````
+Resultado esperado ✘: Status 400 Bad Conflict/Request com a mensagem de erro correspondente.
+````
+`![Resultado dos Testes](./resultado-testes2.png)`
+`![Resultado dos Testes](./resultado-testes3.png)`
+
+**Via Testes Automatizados:**
+```
+Bash
+```
+````
+npm test
+````
+
+`![Resultado dos Testes](./resultado-testes.png)`
 
 
----
 
-### Dica de Ouro para o GitHub:
-Ao subir o código, não esqueça de configurar o arquivo `package.json` para que os comandos acima funcionem. Adicione a seção de scripts assim:
+## Documentação Interativa (Swagger)
 
-```json
-"scripts": {
-  "start": "node server.js",
-  "test": "jest"
-}
+A API conta com uma interface visual para testes. Com o servidor rodando, acesse:
 
-Envie a versão definitiva para o GitHub
-//Bash
+ `http://localhost:3001/api-docs`
 
-# 1. Prepara todos os arquivos (incluindo o README preenchido)
-git add .
 
-# 2. Cria uma mensagem de atualização
-git commit -m "docs: restaurando conteúdo do README"
+Nesta página, você pode usar o botão **"Try it out"** para enviar requisições diretamente do navegador, sem precisar de ferramentas externas.
 
-# 3. Envia para o GitHub
-git push origin main
+````
+Bash
+````
+````
+npm install swagger-ui-express
+````
+
+
+## Versionamento no Github
+
+Para finalizar o desafio, a API deverá ser versionada em um repositório no GitHub:
+
+**Inicie o repositório:** git init
+
+**Crie o .gitignore:** Adicione node_modules para não subir arquivos desnecessários.
+
+**Commit:** git add . e git commit -m "feat: setup API de reciclagem com testes"
+
+**Push:** Crie um repositório no Github e linke-o com git remote add origin <sua-url>.
+
+
+
+##  Checklist do Desafio
+* [x] API com Node.js e Express.
+
+* [x] Validações de regras de negócio complexas.
+
+* [x] Documentação interativa com **Swagger**.
+
+* [x] Persistência em memória (Array).
+
+* [x] Testes de integração (Jest/Supertest).
+
+* [x] Código versionado no GitHub.
+
+
+
+##
+
+**Desenvolvido com o auxílio de IA Generativa para fins de aprendizado em desenvolvimento de APIs.**
+
+
+
+```bash
+    git add README.md
+    git commit -m "docs: versão final da documentação do projeto"
+    git push origin main
+    npm test
+$ npm test
+
+> ecomart-api@1.0.0 test
+> jest
+
+ PASS  tests/product.test.js
+  √ soma básica (6 ms)
+  Cadastro de Produtos EcoMart
+    √ Deve cadastrar um produto válido (683 ms)
+    √ Não deve aceitar preço abaixo de 0.01 (72 ms)
+    √ Não deve aceitar código de barras duplicado (123 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        5.916 s
+Ran all test suites.
